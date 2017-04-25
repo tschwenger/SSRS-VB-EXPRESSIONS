@@ -40,4 +40,12 @@ MID(Parameters!PAR_CONTRACT.Value,
 	INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
 	((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
 
-This will yield the Contract number: 325412 instead of [Plan].[PACE Contract ID].&[325412]
+This will yield the Contract number: 325412 instead of [Plan].[Contract ID].&[325412]
+
+So the final VB code would be:
+
+="Deposits made for Contract " & MID(Parameters!PAR_CONTRACT.Value,
+	INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
+	((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
+	
+Yielding: Deposits made for Contract 325412 
