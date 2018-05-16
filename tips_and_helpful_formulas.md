@@ -6,7 +6,7 @@ Problem: get an error message in report layer, because of multiple values in par
 
 basic expression (causes error):
 
-        Parameters!CenterList.Label
+        =Parameters!CenterList.Label
 
 Fixed expression:
 
