@@ -2,7 +2,7 @@
 
 ### Placeholder expression
 
-Problem: get an error message in report layer, because of multiple values in parameters cannot be shown
+#### Problem: get an error message in report layer, because of multiple values in parameters cannot be shown
 
 basic expression (causes error):
 
@@ -11,7 +11,17 @@ basic expression (causes error):
 Fixed expression:
 
         =Join(Parameters!CenterList.Label,", ")
+
+#### Problem: All the selected values in a parameter show in the report and it gets cluttered
+
+this takes the above example one step further (if QA is giving you hell):
+
+Fixed expression:
+
         
+        =Iif(Parameters!ClassroomList.Count = Count(Fields!ExternalClassroomName.Value,"ClassroomList"),"All", Join(Parameters!ClassroomList.Label,", "))
+
+
 ### Use a Like search find in mdx parameter
 
 Situation: A parameter/filter in the report has too much results and we want to search and filter down the filter
