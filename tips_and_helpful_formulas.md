@@ -53,3 +53,16 @@ Add the following dataset type to the report:
         //FROM [Adventure Works]
 
 This enables the user to enter in a search value and filter down the original parameter
+
+### Indent the hierarchy within a parameter
+
+Problem: when adding a hierarchy as a parameter, it will visual show all members and it's not possible to visual see the difference between levels in a hierarchy. 
+
+* add a calculated field in the parameter dataset
+
+Add the following code:
+
+        =Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value
+
+
+
