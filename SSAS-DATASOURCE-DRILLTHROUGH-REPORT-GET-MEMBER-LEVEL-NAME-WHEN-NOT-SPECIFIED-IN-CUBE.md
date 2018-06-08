@@ -16,7 +16,7 @@ Let's say I want to create a title that says: "Deposits made for Contract 325412
 
 The Original expression in the child report would be something like this:
 
-="Deposits made for Contract " & Parameters!PAR_CONTRACT.Value
+	="Deposits made for Contract " & Parameters!PAR_CONTRACT.Value
 
 * Parameters!PAR_CONTRACT.Value would be the contract parameter specified in the child report
 
@@ -36,16 +36,16 @@ Getting the unique name will confuse the user, so to avoid this, the following c
 
 * use the two in the final section of the MID function to subtract each other to get the correct length
 
-MID(Parameters!PAR_CONTRACT.Value,
-	INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
-	((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
+		=MID(Parameters!PAR_CONTRACT.Value,
+			INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
+			((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
 
 This will yield the Contract number: 325412 instead of [Plan].[Contract ID].&[325412]
 
 So the final VB code would be:
 
-="Deposits made for Contract " & MID(Parameters!PAR_CONTRACT.Value,
-	INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
-	((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
+	="Deposits made for Contract " & MID(Parameters!PAR_CONTRACT.Value,
+		INSTRREV(Parameters!PAR_CONTRACT.Value,"&")+2,
+		((INSTRREV(Parameters!PAR_CONTRACT.Value,"]")) - INSTRREV(Parameters!PAR_CONTRACT.Value,"&")-2))
 	
 Yielding: Deposits made for Contract 325412 
